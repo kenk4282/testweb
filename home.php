@@ -7,12 +7,20 @@
     <title>Document</title>
 </head>
 <body>
+    <form action="update.php" method="post">
     <?php
-    require_once "db.php";
-    $myconn = new Database();
-    $myconn->connect();
-    $myconn->show_information();
-    $myconn->disconnect();
+        require_once "db.php";
+        $myconn = new Database();
+        $myconn->connect();
+        echo "<table border='1'>";
+        echo "<tr><th colspan='11'><h1>รายชื่อหนังสือ</h1></th></tr>";
+        echo "<tr><th colspan='11' align='left'><a href='addbook.php'>+book</a>";
+        $myconn->slt("BookID" ,"book" ,"bookID");
+        echo "<input type='submit' value='Update'></th></tr>";
+        echo "<tr>";
+        $myconn->show_information();
+        $myconn->disconnect();
     ?>
+    </form>
 </body>
 </html>

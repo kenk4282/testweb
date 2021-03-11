@@ -17,34 +17,44 @@
         <tr>
             <td>
                 <form action="handle.php" method="post">
+                    <?php
+                        include_once("db.php");
+                        $myconn = new Database();
+                        $myconn->connect();
+                        $rs = $myconn->getInfOnerecord($_POST['bookID']);
+                    ?>
                     <h2>Fill the Form</h2>
                     <label for="">BookID</label>
-                    <input type="text" name="bookid" id="" required><br>
+                    <input type="text" name="bookid" id="" value="<?= $rs['BookID'] ?>" readonly><br>
                     <label for="">Book name</label>
-                    <input type="text" name="bookname" id="" required><br>
+                    <input type="text" name="bookname" id="" value="<?= $rs['BookName'] ?>" required><br>
                     <label for="">Publish:</label>
-                    <input type="text" name="publish" id="" required><br>
+                    <input type="text" name="publish" id="" value="<?= $rs['Publish'] ?>" required><br>
                     <label for="">UnitPrice</label>
-                    <input type="text" name="unitprice" id="" required><br>
+                    <input type="text" name="unitprice" id="" value="<?= $rs['UnitPrice'] ?>" required><br>
                     <label for="">UnitRent</label>
-                    <input type="password" name="unitrent" id="" required><br>
+                    <input type="text" name="unitrent" id="" value="<?= $rs['UnitRent'] ?>" required><br>
                     <label for="">DayAmount</label>
-                    <input type="text" name="dayamount" id="" required><br>
+                    <input type="text" name="dayamount" id="" value="<?= $rs['DayAmount'] ?>" required><br>
                     <hr>
                     <label for="">Select Picture</label>
                     <input type="file" name="img" id="" size='50'><br>
                     <label for="">Type ID</label>
-                    <select name="typeid" id="">
-                        <option value="0">การ์ตูน</option>
-                        <option value="1">นิยาย</option>
-                        <option value="1">นิตยสาร</option>
-                    </select><br>
+                    <?php
+                        require_once "db.php";
+                        $myconn = new Database();
+                        $myconn->connect();
+                        $myconn->slt("TypeName" ,"typebook" ,"typeid");
+                        $myconn->disconnect();
+                    ?><br>
                     <label for="">Status ID</label>
-                    <select name="Statusid" id="">
-                        <option value="0">ปกติ</option>
-                        <option value="1">ชำรุด</option>
-                        <option value="1">ส่งซ่อม</option>
-                    </select><br>
+                    <?php
+                        require_once "db.php";
+                        $myconn = new Database();
+                        $myconn->connect();
+                        $myconn->slt("StatusName", "statusbook" , "statusbook");
+                        $myconn->disconnect();
+                    ?><br>
                     <button Type="submit">ตกลง</button>
                     <button type="reset">รีเซ็ต</button>
                     <a href="home.php">back to main</a>

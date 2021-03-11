@@ -19,13 +19,9 @@
         public function show_information(){
             $sql="SELECT * FROM `book`";
             $result=$this->dbConn->query($sql);
-            echo "<table border='1'>";
             $counter=0;
             while ($row=$result->fetch_assoc()){
                 if($counter==0){
-                    echo "<tr><th colspan='12'><h1>รายชื่อหนังสือ</h1></th></tr>";
-                    echo "<tr><th colspan='12' align='left'><a href='addbook.php'>+book</a></th></tr>";
-                    echo "<tr>";
                     foreach($row as $key=>$value){
                         echo "<th>{$key}</th>";
                     }
@@ -37,7 +33,6 @@
                 foreach($row as $key=>$value){
                     echo "<td>{$value}</td>";
                 }
-                echo "<td><a href='update.php?inId={$row['BookID']}'>Update</a></td>";
                 echo "<td><a href='handle.php?delId={$row['BookID']}'>Delete</a></td>";
                 echo "</tr>";
             }
@@ -50,12 +45,25 @@
             $rs=$this->dbConn->query($sql);
         }
 
-        public function sltType(){
-            $sql="SELECT * FROM `TypeName`";
-            while ($row -> $key) {
+        public function slt($key, $tablename, $id){
+            $sql = "SELECT $key FROM $tablename";
+            $result = $this->dbConn->query($sql);
+            echo "<select name='{$id}'>";
+            while ($row = $result->fetch_assoc()) {
+            foreach ($row as $key => $value) {
+                echo "<option value='{$value}'>{$value}</option>";
             }
-            $rs=$this->dbConn->query($sql);
         }
+        echo "</select>";
+        }
+
+        public function getInfOnerecord($id) //แสดงข้อมูลที่เลือก
+    {
+        $sql = "SELECT * FROM `book` where BookId=$id";
+        $result = $this->dbConn->query($sql);
+        $row = $result->fetch_assoc();
+        return ($row);
+    }
 
     }
 ?>

@@ -19,30 +19,34 @@
                 <form action="handle.php" method="post">
                     <h2>Fill the Form</h2>
                     <label for="">BookID</label>
-                    <input type="text" name="bookid" id="" required><br>
+                    <input type="text" name="insert_bookid" id="" required><br>
                     <label for="">Book name</label>
-                    <input type="text" name="bookname" id="" required><br>
+                    <input type="text" name="insert_bookname" id="" required><br>
                     <label for="">Publish:</label>
-                    <input type="text" name="publish" id="" required><br>
+                    <input type="text" name="insert_publish" id="" required><br>
                     <label for="">UnitPrice</label>
-                    <input type="text" name="unitprice" id="" required><br>
+                    <input type="text" name="insert_unitprice" id="" required><br>
                     <label for="">UnitRent</label>
-                    <input type="password" name="unitrent" id="" required><br>
+                    <input type="text" name="insert_unitrent" id="" required><br>
                     <label for="">DayAmount</label>
-                    <input type="text" name="dayamount" id="" required><br>
+                    <input type="text" name="insert_dayamount" id="" required><br>
                     <hr>
                     <label for="">Select Picture</label>
-                    <input type="file" name="img" id="" size='50'><br>
+                    <input type="file" name="insert_img" id="" size='50'><br>
                     <label for="">Type ID</label>
                     <?php
                         require_once "db.php";
                         $myconn = new Database();
                         $myconn->connect();
-                        $myconn->sltType();
+                        $myconn->slt("TypeName" ,"typebook" ,"insert_typeid");
+                        $myconn->disconnect();
                     ?><br>
                     <label for="">Status ID</label>
                     <?php
-                        $myconn->sltStatus();
+                        require_once "db.php";
+                        $myconn = new Database();
+                        $myconn->connect();
+                        $myconn->slt("StatusName", "statusbook" , "insert_statusid");
                         $myconn->disconnect();
                     ?><br>
                     <button Type="submit">ตกลง</button>

@@ -8,7 +8,10 @@
 </head>
 <body>
     <?php
-        
+    require_once "db.php";
+    $myconn = new Database();
+    $myconn->connect();
+    $myconn->show_information();
     ?>
 </body>
 </html>

@@ -13,7 +13,7 @@
         }
 
         public function disconnect(){
-            //$this->dbConn->connect_close;
+            $this->dbConn->close();
         }
 
         public function show_information(){

@@ -12,6 +12,10 @@
             $this->dbConn->query("SET NAMES UTF8");
         }
 
+        public function disconnect(){
+            //$this->dbConn->connect_close;
+        }
+
         public function show_information(){
             $sql="SELECT * FROM `book`";
             $result=$this->dbConn->query($sql);
@@ -19,13 +23,13 @@
             $counter=0;
             while ($row=$result->fetch_assoc()){
                 if($counter==0){
-                    //echo "<tr><th colspan='11'><h1>Manage user</h1></th></tr>";
-                    //echo "<tr><th colspan='11' align='left'><a href='register.php'>+user</a></th></tr>";
-                    //echo "<tr>";
+                    echo "<tr><th colspan='11'><h1>รายชื่อหนังสือ</h1></th></tr>";
+                    echo "<tr><th colspan='11' align='left'><a href='addbook.php'>+book</a></th></tr>";
+                    echo "<tr>";
                     foreach($row as $key=>$value){
                         echo "<th>{$key}</th>";
                     }
-                    //echo "<th>OPERATION</th>";
+                    echo "<th>OPERATION</th>";
                     echo "</tr>";
                     $counter++;
                 }
@@ -33,7 +37,7 @@
                 foreach($row as $key=>$value){
                     echo "<td>{$value}</td>";
                 }
-                //echo "<td><a href='handle.php?delId={$row['BookID']}'>Delete</a></td>";
+                echo "<td><a href='handle.php?delId={$row['BookID']}'>Delete</a></td>";
                 echo "</tr>";
             }
             echo "</table>";

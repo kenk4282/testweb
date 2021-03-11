@@ -1,7 +1,7 @@
 <?php
     define("hostname","localhost");
     define("username",'user');
-    define("password","ec1L9W4hnfSNcQia");
+    define("password","iKcVk1uIMEZpuQbr");
     define("dbname","bookstore");
 ?>
 <?php

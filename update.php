@@ -11,7 +11,7 @@
     <table border='1'>
         <tr>
             <th>
-                <h1>ADD BOOK</h1>
+                <h1>UPDATE BOOK</h1>
             </th>
         </tr>
         <tr>
@@ -34,14 +34,11 @@
                     <label for="">Select Picture</label>
                     <input type="file" name="img" id="" size='50'><br>
                     <label for="">Type ID</label>
-                    <?php
-                        require_once "db.php";
-                        $myconn = new Database();
-                        $myconn->connect();
-                        $myconn->sltType();
-                        $myconn->disconnect();
-                    ?>
-                    <br>
+                    <select name="typeid" id="">
+                        <option value="0">การ์ตูน</option>
+                        <option value="1">นิยาย</option>
+                        <option value="1">นิตยสาร</option>
+                    </select><br>
                     <label for="">Status ID</label>
                     <select name="Statusid" id="">
                         <option value="0">ปกติ</option>

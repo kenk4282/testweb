@@ -39,15 +39,12 @@
                         $myconn = new Database();
                         $myconn->connect();
                         $myconn->sltType();
-                        $myconn->disconnect();
-                    ?>
-                    <br>
+                    ?><br>
                     <label for="">Status ID</label>
-                    <select name="Statusid" id="">
-                        <option value="0">ปกติ</option>
-                        <option value="1">ชำรุด</option>
-                        <option value="1">ส่งซ่อม</option>
-                    </select><br>
+                    <?php
+                        $myconn->sltStatus();
+                        $myconn->disconnect();
+                    ?><br>
                     <button Type="submit">ตกลง</button>
                     <button type="reset">รีเซ็ต</button>
                     <a href="home.php">back to main</a>

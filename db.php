@@ -52,6 +52,8 @@
 
         public function sltType(){
             $sql="SELECT * FROM `TypeName`";
+            while ($row -> $key) {
+            }
             $rs=$this->dbConn->query($sql);
         }
 
